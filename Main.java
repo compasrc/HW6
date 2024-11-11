@@ -281,7 +281,7 @@ public class Main {
 
         if ( ! PriorityQueueFail ) {
             score += 19;
-            System.out.println("Priority Queue - PASSED");
+                System.out.println("Priority Queue - PASSED");
         } else {
             System.out.println("Priority Queue - *** FAILED ***");
         }

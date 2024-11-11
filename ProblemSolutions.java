@@ -65,11 +65,27 @@ public class ProblemSolutions {
 
   public static int lastBoulder(int[] boulders) {
 
-      //
-      // ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOUR NAME / SECTION # ABOVE
-      //
-      return -1;
+      // Initialize PQ in reverse order
+      PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
+      for (int boulder : boulders) {
+          pq.add(boulder);
+      }
+
+      // Perform operations on top elements as long as 2+ boulders
+      for (int i = pq.size(); i > 0; i--) {
+          // Check if 2 or more elements are left, pull them both off, and add the difference between the two to the PQ
+          if (pq.size() > 1 && !pq.isEmpty()) {
+              int num1 = pq.poll();
+              int num2 = pq.poll();
+              pq.add(num1 - num2);
+          } else {
+              // Return if only one element left
+              return pq.peek();
+          }
+      }
+      return 0;
   }
+
 
 
     /**
