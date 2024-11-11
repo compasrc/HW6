@@ -97,7 +97,7 @@ public class Main {
          * queue, from the highest priority to a lower priority. It should be repositioned in
          * the min heap as a result.
          *
-         * Only perform operation if no prior erros.
+         * Only perform operation if no prior errors.
          */
 
         if ( ! PriorityQueueFail ) {

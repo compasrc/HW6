@@ -34,7 +34,7 @@ import java.util.Comparator;
  * to know the node's element to use this (aka, have a handle to it), which is 
  * returned from the method which adds the element to the queue. This is for very 
  * basic priority management. Additionally, the invoker can dequeue an element
- * no matter where it is on the queue before it gets processes (popped off), and
+ * no matter where it is on the queue before it gets processed (popped off), and
  * later, if desired, enqueue it with a higher and/or lower priority.
  *
  * A more sophisticated approach would be to implement a weighted priority scheme 
@@ -151,8 +151,15 @@ class PriorityQueue<E, P> {
 
     public Node add(E e, P priority) {
 
-        // YOUR CODE GOES HERE
-        return null;
+        // Instantiate new node and set index to size of the tree (greatest index)
+        Node newNode = new Node(e, priority, tree.size());
+        tree.add(newNode);
+
+        // call pullUp to adjust position based on priority
+        pullUp(newNode.idx);
+
+
+        return newNode;
     }
 
 
@@ -168,8 +175,13 @@ class PriorityQueue<E, P> {
 
     public boolean contains(E e) {
 
-        // ADD YOUR CODE HERE
-        return false;
+        // Iterate through nodes of the tree, checking their element values
+        for (Node node : tree){
+            if (node.value.equals(e)){
+                return true;
+            }
+        }
+    return false;
     }
 
 
