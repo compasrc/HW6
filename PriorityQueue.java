@@ -1,7 +1,7 @@
 
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *   RYAN COMPAS / COMP 272-001
  *
  *   Note, additional comments provided throughout this source code
  *   is for educational purposes
