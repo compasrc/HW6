@@ -71,7 +71,8 @@ public class ProblemSolutions {
           pq.add(boulder);
       }
 
-      // Perform operations on top elements as long as 2+ boulders
+      // Perform operations on top elements as long as 2+ boulders remain
+      // Smashed boulders destroy two elements, but create one, therefore decrement PQ by one each iteration
       for (int i = pq.size(); i > 0; i--) {
           // Check if 2 or more elements are left, pull them both off, and add the difference between the two to the PQ
           if (pq.size() > 1 && !pq.isEmpty()) {
@@ -107,10 +108,23 @@ public class ProblemSolutions {
 
     public static ArrayList<String> showDuplicates(ArrayList<String> input) {
 
-        //
-        //  YOUR CODE GOES HERE
-        //
-        return new ArrayList<>();  // Make sure result is sorted in ascending order
+        // Instantiate list to add duplicate elements
+        ArrayList<String> duplicateElements = new ArrayList<>();
+
+        // Iterate through input and for each string, check a sublist from the next
+        // index to the end of the input list to check if it contains a duplicate.
+        // If it does and the duplicate is not yet in the duplicate elements list, add it.
+        for (int i = 0; i < input.size(); i++){
+            String currentString = input.get(i);
+            if (input.subList(i + 1, input.size()).contains(currentString) && !duplicateElements.contains(currentString)){
+                duplicateElements.add(currentString);
+            }
+        }
+
+        // Sort the list of duplicates
+        Collections.sort(duplicateElements);
+
+        return duplicateElements;
 
     }
 
