@@ -9,6 +9,7 @@
  *
  ********************************************************************/
 
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.PriorityQueue;
 
@@ -161,9 +162,26 @@ public class ProblemSolutions {
 
     public static ArrayList<String> pair(int[] input, int k) {
 
-        //
-        //  YOUR CODE GOES HERE
-        //
-        return new ArrayList<>();  // Make sure returned lists is sorted as indicated above
+        // Sort incoming array
+        Arrays.sort(input);
+
+        // Instantiate ArrayList to store sum values
+        ArrayList<String> pairList = new ArrayList<>();
+
+        // Iterate through the list finding numbers whose sums equal k
+        for (int i = 0; i < input.length; i++) {
+            for (int j = 0; j < input.length; j++) {
+                if (input[i] + input[j] == k) {
+
+                    // If sum = k, add the numbers via concatenation for correct syntax.
+                    // Accounts for reversed numbers to avoid duplicate pairs.
+                    if (!pairList.contains("(" + Integer.toString(input[i]) + ", " + Integer.toString(input[j]) + ")")
+                            && !pairList.contains("(" + Integer.toString(input[j]) + ", " + Integer.toString(input[i]) + ")")) {
+                        pairList.add("(" + Integer.toString(input[i]) + ", " + Integer.toString(input[j]) + ")");
+                    }
+                }
+            }
+        }
+        return pairList;  // Make sure returned lists is sorted as indicated above
     }
 }
